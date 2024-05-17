@@ -6,7 +6,7 @@ This application can detect a several color base on your HSV value that you inpu
 It can detect 3 color set simultaneously, for more color set you can config the code base on my tutorial.
 # How to use
 1. Set frame references.
-2. 
+   
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/03350ee5-1e6d-43a5-af2a-3a7993a243fc)
 
 + Click Enable button to show the camera frame, make use your computer has aldready connected to webcam and choose the suitable camera index value(default 0).
