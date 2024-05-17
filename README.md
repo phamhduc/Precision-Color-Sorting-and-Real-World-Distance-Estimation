@@ -71,7 +71,11 @@ As a result, you can detect the colorset base on your HSV value and get the esti
 
 + For example, replace all instances of '3' with the number of color sets in your code. There are several lines similar to this that need to be edited accordingly
 
+# Importance Note!!!
 
++ This code is extracted from my 6-DOF robot arm control project, so it may contain some irrelevant lines. Please disregard those and focus primarily on the relevant parts for your needs
+
++ For any question about this project, feel free to contact me through email "phamhduc111@gmail.com"
 
 
 
