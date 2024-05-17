@@ -4,6 +4,7 @@
 
 before using, you need to install:
 "pip install opencv-python"
+
 "pip install PyQt5"
 
 # How to use
