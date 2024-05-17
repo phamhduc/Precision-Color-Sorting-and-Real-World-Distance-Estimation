@@ -5,7 +5,7 @@ The GUI is developed base on PyQt5 library in python, combined with opencv to im
 This application can detect a several color base on your HSV value that you input to the app.
 It can detect 3 color set simultaneously, for more color set you can config the code base on my tutorial.
 # How to use
-1. Set frame references.
+** 1. Set frame references. **
    
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/03350ee5-1e6d-43a5-af2a-3a7993a243fc)
 
@@ -21,7 +21,7 @@ After clicking 'Set', the application will warp the frame to fit your realworld 
 
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/1a97167a-a741-4362-bab6-fd3cd943baab)
 
-2. Create your Color Set.
+** 2. Create your Color Set. **
 + Choose your set in 'S1' Combobox. This application provides you 3 detection set.
   
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/e2951ce7-c742-4a43-902f-5e1942be37d0)
