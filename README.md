@@ -47,6 +47,14 @@ As a result, you can detect the colorset base on your HSV value and get the esti
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/26b7e880-34b2-42d7-82d5-68a70c4d7280)
 
 
+# How this app can estimate distance in realworld coordinate?
+
++ By obtaining the four corners of a square or rectangle within the real-world frame, I utilize the perspective warp function to transform and display the working frame in a top view. Subsequently, I extract the pixel values of X and Y coordinates.
+
++ After obtaining the pixel values for X and Y coordinates, I calculate the pixel-to-millimeter ratio separately for each axis base on the actual X and Y dimension inputed by user. as the warping process may result in different scaling factors for X and Y, so the pixel-to-millimeter ratio must be calculated separately.
+
++ Once the pixel-to-millimeter ratios for both X and Y are determined, I multiply these values by the Cx and Cy coordinates of the object to estimate the real-world distance."
+
 
 
 
