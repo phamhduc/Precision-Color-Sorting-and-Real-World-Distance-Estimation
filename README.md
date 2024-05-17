@@ -55,9 +55,21 @@ As a result, you can detect the colorset base on your HSV value and get the esti
 
 + Once the pixel-to-millimeter ratios for both X and Y are determined, I multiply these values by the Cx and Cy coordinates of the object to estimate the real-world distance."
 
+# How to add color set?
 
++ To add color set, you have to config a bit in the code file
++ First add HSV set for new color set
+![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/3c3a51c1-868c-4b91-899b-09f0968bae74)
 
++ Add item for this combo_box.
 
+  ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/2298c4a4-6795-424c-9210-eef2c9b4653f)
+
++ Additionally, you need to update the control index numbers for the combobox throughout the entire codebase.
+
+  ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/0b009102-3a5e-491e-b8a6-e5cb5a71e4d7)
+
++ For example, replace all instances of '3' with the number of color sets in your code. There are several lines similar to this that need to be edited accordingly
 
 
 
