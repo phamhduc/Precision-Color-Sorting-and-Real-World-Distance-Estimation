@@ -22,9 +22,6 @@ After clicking 'Set', the application will warp the frame to fit your realworld 
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/1a97167a-a741-4362-bab6-fd3cd943baab)
 
 2. Create your Color Set.
-  
-![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/f1087690-1aa1-450a-ac87-1df69d0a7559)
-  
 + Choose your set in 'S1' Combobox. This application provides you 3 detection set.
   
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/e2951ce7-c742-4a43-902f-5e1942be37d0)
