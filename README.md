@@ -69,6 +69,9 @@ As a result, you can detect the colorset base on your HSV value and get the esti
 
 + For any question about this project, feel free to contact me through email "phamhduc111@gmail.com"
 
++ watch this video for more coherence https://youtu.be/D6Dd9mKdVn0 
+
+
 
 
 
