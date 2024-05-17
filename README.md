@@ -3,11 +3,12 @@
 **This project is designed to sort colored objects and estimate their real-world distance based on frames captured by a camera. The GUI is developed using the PyQt5 library in Python, combined with OpenCV to implement the application with a vision system. This application can detect several colors based on the HSV values inputted to the app. It can simultaneously detect three color sets. For more color sets, you can configure the code according to my tutorial.**
 
 before using, you need to install:
+
 "pip install opencv-python"
 
 "pip install PyQt5"
 
-# How to use
+# How to use?
 **1. Set frame references.**
    
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/03350ee5-1e6d-43a5-af2a-3a7993a243fc)
