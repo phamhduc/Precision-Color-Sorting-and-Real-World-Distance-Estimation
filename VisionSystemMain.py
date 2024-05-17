@@ -55,6 +55,14 @@ class Ui_Widget(QWidget):
 
 
 
+
+
+
+
+
+
+
+
         self.Color1_pos = [0.0,0.0,0.0] 
         self.Color2_pos = [0.0,0.0,0.0] 
         self.Color3_pos = [0.0,0.0,0.0] 
@@ -495,62 +503,61 @@ class Ui_Widget(QWidget):
 
 
         if self.Is_SetFram == 1:
-            if self.IsMoving == 0:
-                pts1 = np.float32([top_left, top_right, bottom_left, bottom_right])
-                pts2 = np.float32([[0, 0], [w, 0], [0, h], [w, h]])
-                matrix = cv2.getPerspectiveTransform(pts1, pts2)
-                frame_1 = cv2.warpPerspective(Copy_Fram, matrix, (w, h))
-                fram_hsv = cv2.cvtColor(frame_1, cv2.COLOR_BGR2HSV) 
-                Upper_mask_1 = np.array(self.HSV_U1, np.uint8) 
-                Lower_mask_1 = np.array(self.HSV_L1, np.uint8) 
-                Mask_1 = cv2.inRange(fram_hsv,Lower_mask_1,Upper_mask_1)
-                kernel = np.ones((5, 5), np.uint8) 
-                Mask_1 = cv2.dilate(Mask_1, kernel) 
-                Mask_1_Res = cv2.bitwise_and(frame_1, frame_1, mask = Mask_1) 
+            pts1 = np.float32([top_left, top_right, bottom_left, bottom_right])
+            pts2 = np.float32([[0, 0], [w, 0], [0, h], [w, h]])
+            matrix = cv2.getPerspectiveTransform(pts1, pts2)
+            frame_1 = cv2.warpPerspective(Copy_Fram, matrix, (w, h))
+            fram_hsv = cv2.cvtColor(frame_1, cv2.COLOR_BGR2HSV) 
+            Upper_mask_1 = np.array(self.HSV_U1, np.uint8) 
+            Lower_mask_1 = np.array(self.HSV_L1, np.uint8) 
+            Mask_1 = cv2.inRange(fram_hsv,Lower_mask_1,Upper_mask_1)
+            kernel = np.ones((5, 5), np.uint8) 
+            Mask_1 = cv2.dilate(Mask_1, kernel) 
+            Mask_1_Res = cv2.bitwise_and(frame_1, frame_1, mask = Mask_1) 
 
-                Upper_mask_2 = np.array(self.HSV_U2, np.uint8) 
-                Lower_mask_2 = np.array(self.HSV_L2, np.uint8) 
-                Mask_2 = cv2.inRange(fram_hsv,Lower_mask_2,Upper_mask_2)
-                kernel = np.ones((5, 5), np.uint8) 
-                Mask_2 = cv2.dilate(Mask_2, kernel) 
-                Mask_2_Res = cv2.bitwise_and(frame_1, frame_1, mask = Mask_2) 
+            Upper_mask_2 = np.array(self.HSV_U2, np.uint8) 
+            Lower_mask_2 = np.array(self.HSV_L2, np.uint8) 
+            Mask_2 = cv2.inRange(fram_hsv,Lower_mask_2,Upper_mask_2)
+            kernel = np.ones((5, 5), np.uint8) 
+            Mask_2 = cv2.dilate(Mask_2, kernel) 
+            Mask_2_Res = cv2.bitwise_and(frame_1, frame_1, mask = Mask_2) 
 
-                Upper_mask_3 = np.array(self.HSV_U3, np.uint8) 
-                Lower_mask_3 = np.array(self.HSV_L3, np.uint8) 
-                Mask_3 = cv2.inRange(fram_hsv,Lower_mask_3,Upper_mask_3)
-                kernel = np.ones((5, 5), np.uint8) 
-                Mask_3 = cv2.dilate(Mask_3, kernel) 
-                Mask_3_Res = cv2.bitwise_and(frame_1, frame_1, mask = Mask_3) 
-                if self.Xdim == 0:
-                    self.Xdim = w
-                if self.Ydim == 0:
-                    self.Ydim = h
+            Upper_mask_3 = np.array(self.HSV_U3, np.uint8) 
+            Lower_mask_3 = np.array(self.HSV_L3, np.uint8) 
+            Mask_3 = cv2.inRange(fram_hsv,Lower_mask_3,Upper_mask_3)
+            kernel = np.ones((5, 5), np.uint8) 
+            Mask_3 = cv2.dilate(Mask_3, kernel) 
+            Mask_3_Res = cv2.bitwise_and(frame_1, frame_1, mask = Mask_3) 
+            if self.Xdim == 0:
+                self.Xdim = w
+            if self.Ydim == 0:
+                self.Ydim = h
 
-                P2_mm_Ratio_x = self.Xdim/w
-                P2_mm_Ratio_y = self.Ydim/h
+            P2_mm_Ratio_x = self.Xdim/w
+            P2_mm_Ratio_y = self.Ydim/h
 
-                if self.ChosenSet == 1 or self.ChosenSet == 4:  
-                    contours, hierarchy = cv2.findContours(Mask_1, cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE) 
-                    for pic, contour in enumerate(contours): 
-                        area = cv2.contourArea(contour) 
-                        if(area > 300): 
-                            M = cv2.moments(contour)
-                            # Calculate the centroid of the contour
-                            if M["m00"] != 0:
-                                cx = int(M["m10"] / M["m00"])
-                                cy = int(M["m01"] / M["m00"])
-                                #if cv2.pointPolygonTest(region_polygon, (cx, cy), False) >= 0:
-                                cv2.circle(frame_1, (cx, cy), 5, (255, 255, 0), -1)
-                                text = f"(X:{(cx) * P2_mm_Ratio_x:.1f}mm|Y:{(h-cy) * P2_mm_Ratio_y:.1f}mm)"
-                                cv2.putText(frame_1, "Set 1:" + text, (cx - 20, cy - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 2)
+            if self.ChosenSet == 1 or self.ChosenSet == 4:  
+                contours, hierarchy = cv2.findContours(Mask_1, cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE) 
+                for pic, contour in enumerate(contours): 
+                    area = cv2.contourArea(contour) 
+                    if(area > 300): 
+                        M = cv2.moments(contour)
+                        # Calculate the centroid of the contour
+                        if M["m00"] != 0:
+                            cx = int(M["m10"] / M["m00"])
+                            cy = int(M["m01"] / M["m00"])
+                            #if cv2.pointPolygonTest(region_polygon, (cx, cy), False) >= 0:
+                            cv2.circle(frame_1, (cx, cy), 5, (255, 255, 0), -1)
+                            text = f"(X:{(cx) * P2_mm_Ratio_x:.1f}mm|Y:{(h-cy) * P2_mm_Ratio_y:.1f}mm)"
+                            cv2.putText(frame_1, "Set 1:" + text, (cx - 20, cy - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 2)
 
-                                # Draw a circle at the centroid
-                
-                                # Draw a text near the centroid
-                        
-                            #cv2.drawContours(frame, [contour], 0, (255, 255, 0), 2)
-                            #frame = cv2.rectangle(frame, (x, y),(x + w, y + h),(255, 255, 0), 2) 
-                            #cv2.putText(frame, "Set 2", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 0))  
+                            # Draw a circle at the centroid
+            
+                            # Draw a text near the centroid
+                    
+                        #cv2.drawContours(frame, [contour], 0, (255, 255, 0), 2)
+                        #frame = cv2.rectangle(frame, (x, y),(x + w, y + h),(255, 255, 0), 2) 
+                        #cv2.putText(frame, "Set 2", (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 0))  
 
 
                 if self.ChosenSet == 2 or self.ChosenSet == 4:            
@@ -711,7 +718,7 @@ class Ui_Widget(QWidget):
             else:
                 self.CamID = int(self.CamID_lineEdit.text())
             Mes = "Cam index change to "+ str(self.CamID)
-            self.Vision_textBrowser.append(datetime.now().strftime("[%H:%M:%S]: ")+Mes)   
+            self.Vision_textBrowser.append(datetime.now().strftime("[%H:%M:%S]: ")+ Mes)   
 
             return
     
@@ -840,51 +847,6 @@ class Ui_Widget(QWidget):
         else:
             self.Vision_textBrowser.append(datetime.now().strftime("[%H:%M:%S]: ") +"Please disable Camera before tracking color")  
 
-
-
-
-
-    #TAB3 FUNCTION
-    def Save_Robot_Congfig(self):
-        if self.AD_D1_lineEdit.text():
-            RK.D0 = float(self.AD_D1_lineEdit.text())
-      
-        if self.AD_D2_lineEdit.text():
-            RK.D1 = float(self.AD_D2_lineEdit.text())
- 
-
-        if self.AD_D3_lineEdit.text():
-            RK.D2 = float(self.AD_D3_lineEdit.text())
-        
-
-        if self.AD_L1_lineEdit.text():
-            RK.L1= float(self.AD_L1_lineEdit.text())
-
-        if self.AD_L2_lineEdit.text():
-            RK.L2 = float(self.AD_L2_lineEdit.text())
-
-        if self.AD_L3_lineEdit.text():
-            RK.L3 = float(self.AD_L3_lineEdit.text())
-
-        #Update Upper Limit
-        for i in range(1, 6):
-            line_edit = getattr(self, f"Lim_U_J{i}lineEdit")
-            if line_edit.text():
-                self.DOF_Max_UpperLim[i - 1] = float(line_edit.text())
-
-        #Update Upper Limit
-        for i in range(1, 6):
-            line_edit = getattr(self, f"Lim_L_J{i}lineEdit")
-            if line_edit.text():
-                self.DOF_Max_LowerLim[i - 1] = float(line_edit.text())
-
-        #Update Upper Limit
-        for i in range(1, 6):
-
-            line_edit = getattr(self, f"RR_J{i}_lineEdit")
-            if line_edit.text():
-                self.Gear_Ratio[i - 1] = float(line_edit.text())
-        self.Update_Pose_LineEdit()
     
 def nothing(x):
     pass
