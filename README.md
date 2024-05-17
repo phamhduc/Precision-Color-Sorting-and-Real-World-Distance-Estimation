@@ -28,9 +28,7 @@ After clicking 'Set', the application will warp the frame to fit your realworld 
 
 + You can edit the HSV value directly in line edit for lower and upper HSV value.
 + You can also track for your expectated color. Please disable the camera before tracking.
-  
-
-
++ After clicking track, there will be a pop-up windown for tracking value.
 + Put all of your object in the frame and use the trackbar to find the best HSV value.
 
 ![image](https://github.com/phamhduc/Precision-Color-Sorting-and-Real-World-Distance-Estimation/assets/101264143/eacfa0cb-82de-42d2-abe5-ac88f7b43a40)
